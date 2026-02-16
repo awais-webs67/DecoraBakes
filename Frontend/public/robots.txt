@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://decorabake.com.au/sitemap.xml
+
+# Block admin pages from search engines
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /checkout
+Disallow: /checkout/*
+
+# Allow all other pages
+Allow: /products
+Allow: /product/*
+Allow: /category/*
+Allow: /about
+Allow: /contact
+Allow: /privacy
+Allow: /blog
+Allow: /blog/*

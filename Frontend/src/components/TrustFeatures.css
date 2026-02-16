@@ -1,0 +1,74 @@
+/* Trust Features Section */
+.trust-features {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 30px 0;
+}
+
+.trust-features__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.trust-feature {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: all 0.25s ease;
+}
+
+.trust-feature:hover {
+    background: #FCE8ED;
+    border-color: #F9D5E0;
+}
+
+.trust-feature__icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #6B2346;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.trust-feature__icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.trust-feature__content {
+    flex: 1;
+}
+
+.trust-feature__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 4px 0;
+}
+
+.trust-feature__desc {
+    font-size: 12px;
+    color: #777;
+    margin: 0;
+}
+
+@media (max-width: 992px) {
+    .trust-features__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .trust-features__grid {
+        grid-template-columns: 1fr;
+    }
+}
