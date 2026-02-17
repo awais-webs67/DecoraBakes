@@ -151,8 +151,8 @@ app.post('/api/stripe/webhook', express.raw({ type: 'application/json' }), async
 // Body parser with size limit
 app.use(express.json({ limit: '1mb' }))
 
-// Uploads directory
-const uploadsDir = join(__dirname, 'uploads')
+// Uploads directory — Vercel has read-only FS, use /tmp in production
+const uploadsDir = process.env.VERCEL ? '/tmp/uploads' : join(__dirname, 'uploads')
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true })
 app.use('/uploads', express.static(uploadsDir))
 
@@ -1590,8 +1590,13 @@ app.post('/api/newsletter', async (req, res) => {
     } catch (err) { res.status(500).json({ error: err.message }) }
 })
 
-// Start
-app.listen(PORT, () => {
-    console.log(`🚀 Backend: http://localhost:${PORT}`)
-    console.log(`📡 Frontend: ${process.env.FRONTEND_URL}`)
-})
+// Start server (only when not on Vercel — Vercel uses the exported app)
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`🚀 Backend: http://localhost:${PORT}`)
+        console.log(`📡 Frontend: ${process.env.FRONTEND_URL}`)
+    })
+}
+
+// Export for Vercel serverless
+export default app
